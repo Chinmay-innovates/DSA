@@ -31,12 +31,12 @@ void insert(int key) {
             i++;
         } while (newIndex != index);
 
-        printf("\nHash table is full. Cannot insert %d\n", key);
+        printf("Hash table is full. Cannot insert %d\n", key);
     }
 }
 
 void displayHashTable() {
-    printf("\nHash Table:\n");
+    printf("Hash Table:\n");
     for (int i = 0; i < SIZE; i++) {
         printf("Index %d: ", i);
         if (hashTable[i] != 0) {
@@ -49,7 +49,7 @@ void displayHashTable() {
 }
 
 int main() {
-    int keys[] = {65,34,79,14,26,85,55,89,22,98};
+    int keys[] = {65,34,79,114,26,85,55,89,22,98};
     int numKeys = sizeof(keys) / sizeof(keys[0]);
 
     for (int i = 0; i < numKeys; i++) {
