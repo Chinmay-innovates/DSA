@@ -1,3 +1,3 @@
-<h1>DBasic DSA algorithms
+<h1>Basic DSA algorithms
 
 
