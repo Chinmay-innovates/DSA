@@ -1,4 +1,5 @@
-//  C program to Implement Tree-Traversal-Methords in BST: In-Order , Pre-order, Post-Order
+// C program to Implement Tree-Traversal-Methords in BST
+// In-Order , Pre-order, Post-Order
 #include <stdio.h>
 #include <stdlib.h>
 // Struture for a BST node
@@ -76,3 +77,15 @@ int main(void)
     printf("\n\nPost-order Traversal of BST: ");
     Postorder(root);
 }
+/*                                        OUTPUT
+PS C:\VS-code\.vscode\Data Structures> cd "c:\VS-code\.vscode\Data Structures\DS_Project\" ;
+if ($?) { gcc Tree_Traversal.c -o Tree_Traversal } ; if ($?) { .\Tree_Traversal }
+
+In-order Traversal of BST: 5 7 8 9 11 14 16 
+
+Pre-order Traversal of BST: 9 7 5 8 14 11 16 
+
+Post-order Traversal of BST: 5 8 7 11 16 14 9 
+
+PS C:\VS-code\.vscode\Data Structures\DS_Project> 
+*/
