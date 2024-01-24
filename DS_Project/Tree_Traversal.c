@@ -67,6 +67,8 @@ int main(void)
     // Building the BST
     for (int i = 0; i < numKeys; i++)
         root = insert(root, data[i]);
+
+    printf("USING RECURSION METHORD\n");
     printf("\n\nIn-order Traversal of BST: ");
     Inorder(root);
 
@@ -77,9 +79,10 @@ int main(void)
     Postorder(root);
 }
 /*                                        OUTPUT
-PS C:\VS-code\.vscode\Data Structures> cd "c:\VS-code\DataStructures\DS_Project\";
+PS C:\VS-code\Data Structures> cd "c:\VS-code\DataStructures\DS_Project\";
 if ($?) { gcc Tree_Traversal.c -o Tree_Traversal } ; if ($?) {.\Tree_Traversal}
 
+USING RECURSION METHORD
 In-order Traversal of BST: 5 7 8 9 11 14 16
 Pre-order Traversal of BST: 9 7 5 8 14 11 16
 Post-order Traversal of BST: 5 8 7 11 16 14 9

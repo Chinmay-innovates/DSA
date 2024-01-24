@@ -148,6 +148,7 @@ int main()
     root->left->left = createNode(4);
     root->left->right = createNode(5);
 
+    printf("USING NON RECURSIVE METHORD\n");
     printf("Inorder Traversal: ");
     inorderTraversal(root);
     printf("\n");
@@ -163,9 +164,10 @@ int main()
     return 0;
 }
 /*                                        OUTPUT
-PS C:\VS-code\.vscode\Data Structures> cd "c:\VS-code\DataStructures\DS_Project\" ;
+PS C:\VS-code\Data Structures> cd "c:\VS-code\DataStructures\DS_Project\" ;
 if ($?) { gcc TreeTraversal.c -o TreeTraversal } ; if ($?) { .\TreeTraversal }
 
+USING NON RECURSIVE METHORD
 Inorder Traversal: 4 2 5 1 3
 Preorder Traversal: 1 2 4 5 3
 Postorder Traversal: 4 5 2 3 1
