@@ -1,3 +1,5 @@
+package java_practice;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,7 +168,7 @@ public class Sorting {
         bubbleSort(arr);
 
         selectionSort(arr);
-        
+
         insertionSort(arr);
 
         mergeSort(arr, 0, arr.length - 1);

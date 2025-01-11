@@ -1,3 +1,5 @@
+package java_practice;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -299,8 +301,8 @@ public class Memoization {
         // printCanSum(33, new int[] { 5, 3, 4, 7 }); // true
         // printCanSum(301, new int[] { 2, 14 }); // false
 
-        // printHowSum(7, new int[] { 5, 3, 4, 7 });
-        // printHowSum(300, new int[] { 7, 14 });
+        printHowSum(7, new int[] { 5, 3, 4, 7 });
+        printHowSum(300, new int[] { 7, 14 });
 
         // printBestSum(8, new int[] { 1, 4, 5 });
         // printBestSum(100, new int[] { 1, 2, 5, 25 });
@@ -318,3 +320,56 @@ public class Memoization {
         System.out.println("Execution Time: " + (et - st) + " ms");
     }
 }
+/**
+ * import java.util.*;
+ * 
+ * public class Main {
+ * public static Map<String, List<Integer>> memo = new HashMap<>();
+ * 
+ * public static List<Integer> bestSum(int targetSum, int[] nums, Map<Integer,
+ * Integer> availableBills) {
+ * String key = targetSum + ":" + availableBills; // Unique key based on
+ * remaining bills
+ * if (memo.containsKey(key)) return memo.get(key);
+ * if (targetSum == 0) return new ArrayList<>();
+ * if (targetSum < 0) return null;
+ * 
+ * List<Integer> shortestComb = null;
+ * for (int num : nums) {
+ * if (availableBills.get(num) > 0) { // Check if we have this denomination left
+ * // Reduce the available count
+ * availableBills.put(num, availableBills.get(num) - 1);
+ * 
+ * List<Integer> remainderComb = bestSum(targetSum - num, nums, availableBills);
+ * 
+ * if (remainderComb != null) {
+ * List<Integer> combination = new ArrayList<>(remainderComb);
+ * combination.add(num);
+ * 
+ * if (shortestComb == null || combination.size() < shortestComb.size()) {
+ * shortestComb = combination;
+ * }
+ * }
+ * // Restore the available count (backtracking)
+ * availableBills.put(num, availableBills.get(num) + 1);
+ * }
+ * }
+ * 
+ * memo.put(key, shortestComb);
+ * return shortestComb;
+ * }
+ * 
+ * public static void main(String[] args) {
+ * int targetSum = 230;
+ * int[] nums = {100, 50, 20};
+ * Map<Integer, Integer> availableBills = new HashMap<>();
+ * availableBills.put(100, 2); // Only 2 bills of 100 available
+ * availableBills.put(50, 3); // Only 3 bills of 50 available
+ * availableBills.put(20, 4); // Only 4 bills of 20 available
+ * 
+ * List<Integer> result = bestSum(targetSum, nums, availableBills);
+ * System.out.println(result); // Best way to make target sum within available
+ * bills
+ * }
+ * }
+ */
