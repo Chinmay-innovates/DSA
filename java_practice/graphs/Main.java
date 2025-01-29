@@ -1,7 +1,7 @@
 package java_practice.graphs;
 
 import java.util.ArrayList;
-
+import java_practice.graphs.Graph.Edge;
 
 public class Main {
     public static void main(String[] args) {

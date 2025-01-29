@@ -3,6 +3,8 @@ package java_practice.graphs;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+import java_practice.graphs.Graph.Edge;
+
 
 // O(E + ElogV)
 // ElogV priority queue (sorting) -> nlogN;

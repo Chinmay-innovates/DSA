@@ -3,6 +3,7 @@ package java_practice.graphs;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+import java_practice.graphs.Graph.Edge;
 
 public class Prims {
     public static class Pair implements Comparable<Pair> {

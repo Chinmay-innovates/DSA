@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import java_practice.graphs.Graph.Edge;
 
 public class BFS {
     public static void bfs(ArrayList<Edge>[] graph, int V) {

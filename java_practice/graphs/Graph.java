@@ -2,8 +2,22 @@ package java_practice.graphs;
 
 import java.util.ArrayList;
 
-
 public class Graph {
+    static class Edge {
+        int src, dest, wt;
+
+        public Edge(int s, int d, int w) {
+            this.src = s;
+            this.dest = d;
+            this.wt = w;
+        }
+
+        public Edge(int s, int d) {
+            this.src = s;
+            this.dest = d;
+        }
+    }
+
     public static void getBridge(ArrayList<Edge>[] graph, int V) {
 
         int time = 0;
