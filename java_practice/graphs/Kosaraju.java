@@ -3,6 +3,7 @@ package java_practice.graphs;
 import java.util.ArrayList;
 import java.util.Stack;
 
+
 public class Kosaraju {
 
     public static void kosarajuAlgo(ArrayList<Edge>[] graph, int V) {

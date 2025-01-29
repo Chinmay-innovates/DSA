@@ -2,6 +2,7 @@ package java_practice.graphs;
 
 import java.util.ArrayList;
 
+
 public class CycleDetection {
     public static boolean hasDirectedCycle(ArrayList<Edge>[] graph, int curr, boolean[] visited, boolean[] recStack) {
         visited[curr] = true;

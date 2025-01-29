@@ -286,20 +286,20 @@ public class Memoization {
     public static void main(String[] args) {
         long st = System.currentTimeMillis();
 
-        // printFib(20);
-        // printFib(50);
+        printFib(20);
+        printFib(50);
 
-        // printFact(18);
-        // printFact(20);
+        printFact(18);
+        printFact(20);
 
-        // printPart(50);
-        // printPart(200);
+        printPart(50);
+        printPart(200);
 
-        // printGrid(3, 3);
-        // printGrid(18, 18);
+        printGrid(3, 3);
+        printGrid(18, 18);
 
-        // printCanSum(33, new int[] { 5, 3, 4, 7 }); // true
-        // printCanSum(301, new int[] { 2, 14 }); // false
+        printCanSum(33, new int[] { 5, 3, 4, 7 }); // true
+        printCanSum(301, new int[] { 2, 14 }); // false
 
         printHowSum(7, new int[] { 5, 3, 4, 7 });
         printHowSum(300, new int[] { 7, 14 });

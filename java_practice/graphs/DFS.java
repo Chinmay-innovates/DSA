@@ -2,6 +2,7 @@ package java_practice.graphs;
 
 import java.util.ArrayList;
 
+
 public class DFS {
     public static void dfs(ArrayList<Edge>[] graph, int curr, boolean[] visited) {
         System.out.print(curr + " ");

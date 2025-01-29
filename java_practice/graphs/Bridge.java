@@ -2,6 +2,8 @@ package java_practice.graphs;
 
 import java.util.ArrayList;
 
+import java_practice.Edge;
+
 public class Bridge {
     public static void getBridge(ArrayList<Edge>[] graph, int V) {
 
