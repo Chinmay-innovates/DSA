@@ -2,11 +2,11 @@ package java_practice;
 
 import java.util.*;
 
-class Stack {
+class StackImpl {
     private List<Integer> stack;
     private int[] incArray;
 
-    public Stack() {
+    public StackImpl() {
         this.stack = new ArrayList<>();
         this.incArray = new int[1000];
     }
@@ -51,8 +51,31 @@ class Stack {
         System.out.println(tempStack);
     }
 
+    public boolean validParenthesis(String s) {
+        Stack<Character> stack = new Stack<>();
+        System.out.println(s);
+        for (char c : s.toCharArray()) {
+            System.out.println(c);
+            if (c == '(' || c == '{' || c == '[') {
+                stack.push(c);
+            } else {
+                if (stack.isEmpty())
+                    return false;
+
+                if ((c == ')' && stack.peek() == '(') ||
+                        (c == '}' && stack.peek() == '{') ||
+                        (c == ']' && stack.peek() == '['))
+                    stack.pop();
+                else
+                    return false;
+
+            }
+        }
+        return stack.isEmpty();
+    }
+
     public static void main(String[] args) {
-        Stack s = new Stack();
+        StackImpl s = new StackImpl();
         s.push(3);
         s.push(5);
         s.push(7);
@@ -65,5 +88,7 @@ class Stack {
         s.push(2);
         s.inc(3, 5);
         s.printStack(); // Expected output: [18, 20, 12, 2]
+        System.out.println(
+                s.validParenthesis("{()}[]"));
     }
 }
