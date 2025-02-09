@@ -9,6 +9,9 @@ public class Main {
         ArrayList<Edge>[] graph = new ArrayList[V];
         Graph.createGraph(graph);
 
+        System.out.println("Print Graph : ");
+        Graph.printGraph(graph);
+
         System.out.println("Print all paths : ");
         Graph.printAllPaths(graph, new boolean[V], 0, " ", 8);
         System.out.println("Print all paths Complete");
@@ -26,6 +29,13 @@ public class Main {
 
         System.out.println("\nBellman-Ford Algorithm:");
         BellmanFord.bellmanFord(graph, 0, V);
+
+        int[] h = new int[V];
+        for (int i = 0; i < V; i++) {
+            h[i] = Math.abs(i - (V - 1)); // Example heuristic: Distance from node to target
+        }
+
+        Astar.aStar(graph, 0, V - 1, V, h);
 
         System.out.println("\nhas directed cycle : " +
                 CycleDetection.hasDirectedCycle(graph, 0, new boolean[V], new boolean[V]));

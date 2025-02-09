@@ -1,6 +1,7 @@
 package java_practice.graphs;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Graph {
     static class Edge {
@@ -45,44 +46,41 @@ public class Graph {
         }
     }
 
+    public static void printGraph(ArrayList<Edge>[] graph) {
+        for (int i = 0; i < graph.length; i++) {
+            System.out.print(i + " -> ");
+            for (Edge e : graph[i]) {
+                System.out.print("(" + e.dest + ", " + e.wt + ") ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void createGraph(ArrayList<Edge>[] graph) {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
-        /*
-         * (0) —— (1) —— (2)
-         * | | |
-         * (3) —— (4) —— (5) —— (6)
-         * / \
-         * (7) (8)
-         */
-        // Undirected Edges
-        graph[0].add(new Edge(0, 1, 4));
-        graph[0].add(new Edge(0, 3, 3));
 
-        graph[1].add(new Edge(1, 0, 4));
-        graph[1].add(new Edge(1, 2, 2));
-        graph[1].add(new Edge(1, 4, 1));
+        Random rand = new Random();
 
-        graph[2].add(new Edge(2, 1, 2));
-        graph[2].add(new Edge(2, 5, 5));
+        // Ensure connectivity (Spanning Tree)
+        for (int i = 1; i < graph.length; i++) {
+            int parent = rand.nextInt(i); // Connect to any previous node
+            int weight = rand.nextInt(20) + 1;
+            graph[parent].add(new Edge(parent, i, weight));
+            graph[i].add(new Edge(i, parent, weight)); // Undirected
+        }
 
-        graph[3].add(new Edge(3, 0, 3));
-        graph[3].add(new Edge(3, 4, 7));
-
-        graph[4].add(new Edge(4, 1, 1));
-        graph[4].add(new Edge(4, 3, 7));
-        graph[4].add(new Edge(4, 5, 6));
-        graph[4].add(new Edge(4, 7, 3));
-        graph[4].add(new Edge(4, 8, 2));
-
-        graph[5].add(new Edge(5, 2, 5));
-        graph[5].add(new Edge(5, 4, 6));
-        graph[5].add(new Edge(5, 6, 8));
-
-        graph[6].add(new Edge(6, 5, 8));
-
-        graph[7].add(new Edge(7, 4, 3));
-        graph[8].add(new Edge(8, 4, 2));
+        // Add extra edges for complexity
+        int extraEdges = (int) (graph.length * 1.5);
+        for (int i = 0; i < extraEdges; i++) {
+            int u = rand.nextInt(graph.length);
+            int v = rand.nextInt(graph.length);
+            if (u != v) {
+                int weight = rand.nextInt(20) + 1;
+                graph[u].add(new Edge(u, v, weight));
+                graph[v].add(new Edge(v, u, weight));
+            }
+        }
     }
 }
