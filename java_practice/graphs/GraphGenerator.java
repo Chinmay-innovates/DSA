@@ -75,7 +75,8 @@ public class GraphGenerator {
     }
 
     // A* algorithm
-    public static List<Integer> findShortestPath(List<List<Edge>> graph, int src, int tar, int V, int[] h) {
+    public static List<Integer> findShortestPath(List<List<Edge>> graph, int src, int tar, int V) {
+        int[] h = calculateHeuristic(graph);
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         int[] dist = new int[V];
         int[] parent = new int[V];
@@ -132,17 +133,15 @@ public class GraphGenerator {
     }
 
     public static void main(String[] args) {
-        int V = 1000; // Number of vertices
-        int E = 5000; // Number of edges
+        int V = 100; // Number of vertices
+        int E = 500; // Number of edges
 
         // Generate a graph
         List<List<Edge>> graph = createGraph(V, E);
 
         // printGraph(graph);
 
-        int[] h = calculateHeuristic(graph);
         int src = 0, tar = 9;
-
-        System.out.println("Shortest path: " + findShortestPath(graph, src, tar, V, h));
+        System.out.println("Shortest path: " + findShortestPath(graph, src, tar, V));
     }
 }

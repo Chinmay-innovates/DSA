@@ -140,3 +140,64 @@ class StackImpl {
 
     }
 }
+
+class MinStack {
+    Stack<Long> stack = new Stack<>();
+
+    long minVal;
+
+    public void push(int val) {
+        if (stack.isEmpty()) {
+            stack.push((long) val);
+            minVal = val;
+        }
+
+        else {
+            if (val < minVal) {
+                stack.push(2L * val - minVal);
+                minVal = val;
+            } else
+                stack.push((long) val);
+        }
+
+    }
+
+    public void pop() {
+        if (stack.isEmpty()) // edge case
+            return;
+
+        if (stack.peek() < minVal)
+            minVal = 2 * minVal - stack.peek();
+        else
+            stack.pop();
+
+        if (stack.isEmpty())
+            minVal = Integer.MAX_VALUE; // Reset minVal when stack becomes empty
+    }
+
+    public Integer top() {
+        if (stack.isEmpty()) // edge case
+            return null;
+
+        if (stack.peek() < minVal)
+            return (int) minVal;
+
+        return stack.peek().intValue();
+    }
+
+    public Integer getMin() {
+        return stack.isEmpty() ? null : (int) minVal;
+    }
+
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
+
+        minStack.push(-2);
+        minStack.push(0);
+        minStack.push(-3);
+        System.out.println(minStack.getMin()); // Output: -3
+        minStack.pop();
+        System.out.println(minStack.top()); // Output: 0
+        System.out.println(minStack.getMin()); // Output: -2
+    }
+}
