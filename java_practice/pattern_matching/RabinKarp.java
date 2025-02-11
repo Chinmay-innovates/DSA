@@ -112,6 +112,7 @@ public class RabinKarp {
         String text = "ABABDABACDABDABABCABABABABDABACDABACABABABDABACDABABCABABABDABACDABABCABCABABABABDA";
         String pattern = "BABA";
         rabinKarpSearch(text, pattern);
+        optimizedRabinKarpSearch(text, pattern);
     }
 }
 /**
