@@ -14,7 +14,7 @@ def max2(a, b) -> int:
 
 
 def fact(n):
-	return 1 if n == 1 else n * fact(n - 1)
+	return 1 if n <= 1 else n * fact(n - 1)
 
 
 def simpleInterest(p, t, r):
@@ -22,13 +22,8 @@ def simpleInterest(p, t, r):
 
 
 def isArmstrong(n):
-	_sum = 0
-	temp = n
-	while temp > 0:
-		digit = temp % 10
-		_sum += digit ** 3
-		temp //= 10
-	return n == _sum
+	num_digits = len(str(n))  # Count number of digits
+	return n == sum(int(digit) ** num_digits for digit in str(n))
 
 
 def areaOfCircle(r):
@@ -40,7 +35,7 @@ def isPrime(n):
 	if n == 2: return True
 	if n % 2 == 0: return False
 
-	for i in range(math.sqrt(n) + 1):
+	for i in range(3, int(math.sqrt(n)) + 1, 2):
 		if n % i == 0:
 			return False
 	return True
@@ -51,7 +46,7 @@ def sieve_of_eratosthenes(a, b):
 	if a > b:
 		return []
 	
-	is_prime = [True] * (b + 1)
+	is_prime = [True] * (b - a + 1)
 	is_prime[0] = is_prime[1] = False  # 0 and 1 are not prime numbers
 
 	i = 2
@@ -71,18 +66,19 @@ def nth_fib(n):
 	return a
 
 
-def nth_multiple_in_fib(n, num):
+def nth_multiple_in_fib(n, num, limit=1000):
 	fib1, fib2 = 0, 1
 	count = 0
 	index = 1  # Fib series index
 
-	while True:
+	while index < limit:
 		if fib1 % num == 0:
 			count += 1
 			if count == n:
 				return fib1
 		fib1, fib2 = fib2, fib1 + fib2
 		index += 1
+	return -1
 
 
 def get_ASCII(char):
@@ -114,15 +110,15 @@ def is_fibonacci(n):
 def nth_fib_matix(n):
 	if n == 0: return 0
 
-	fib_matix = [[1, 1], [1, 0]]
+	fib_matrix = [[1, 1], [1, 0]]
 
-	result_matrix = matrix_pow(fib_matix, n - 1)
+	result_matrix = matrix_pow(fib_matrix, n - 1)
 
 	return result_matrix[0][0]
 
 
 def matrix_pow(mat, power):
-	result = [[1, 0], [1, 0]]  # Identity matrix
+	result = [[1, 0], [0, 1]]  # Identity matrix
 	while power > 0:
 		if power % 2 != 0:
 			result = matrix_mul(result, mat)
@@ -155,6 +151,7 @@ def simple_sieve(limit):
 	return [p for p in range(2, limit + 1) if is_prime[p]]
 
 
+# O(rootB loglog(rootB​) + (b−a) loglogb) 
 def segmented_sieve(a, b):
 	if a > b or a < 0 or b < 0:
 		return []
