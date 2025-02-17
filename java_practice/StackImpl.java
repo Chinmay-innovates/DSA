@@ -93,6 +93,25 @@ class StackImpl {
         }
     }
 
+    public static void prevSmallerElement(int[] arr) {
+        Stack<Integer> s = new Stack<>();
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            while (!s.isEmpty() && s.peek() >= arr[i]) {
+                s.pop();
+            }
+            if (s.isEmpty())
+                result[i] = -1;
+            else
+                result[i] = s.peek();
+            s.push(arr[i]);
+        }
+
+        for (int val : result) {
+            System.out.print(val + " ");
+        }
+    }
+
     public static int[] nextGreaterElement_1(int[] nums1, int[] nums2) {
         // nums2 is a subset of nums1
         // len(nums1) >= len(nums2)
@@ -137,6 +156,8 @@ class StackImpl {
         int[] nums2 = { 6, 2, 4 };
 
         nextGreaterElement_1(nums1, nums2);
+        prevSmallerElement(nums2);
+        prevSmallerElement(nums1);
 
     }
 }
