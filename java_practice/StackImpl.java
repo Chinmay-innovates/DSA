@@ -1,5 +1,6 @@
 package java_practice;
 
+import java.sql.Array;
 import java.util.*;
 
 class StackImpl {
@@ -112,6 +113,45 @@ class StackImpl {
         }
     }
 
+    public static int largestRectangleArea(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        int n = heights.length;
+        int[] left = new int[n], right = new int[n];
+
+        Arrays.fill(left, 0); // previous smaller element
+        Arrays.fill(right, 0); // next smaller element
+
+        // Right smaller
+        for (int i = n - 1; i >= 0; i--) {
+            while (stack.size() > 0 && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            right[i] = stack.isEmpty() ? n : stack.peek();
+            stack.push(i);
+        }
+
+        while (!stack.isEmpty()) {
+            stack.pop();
+        }
+
+        // Left smaller
+        for (int i = 0; i < n; i++) {
+            while (stack.size() > 0 && heights[stack.peek()] >= heights[i]) {
+                stack.pop();
+            }
+            left[i] = stack.isEmpty() ? -1 : stack.peek();
+            stack.push(i);
+        }
+
+        int maxArea = 0;
+        for (int i = 0; i < n; i++) {
+            int currArea = heights[i] * (right[i] - left[i] - 1); // height * width
+            maxArea = Math.max(maxArea, currArea);
+        }
+
+        return maxArea;
+    }
+
     public static int[] nextGreaterElement_1(int[] nums1, int[] nums2) {
         // nums2 is a subset of nums1
         // len(nums1) >= len(nums2)
@@ -155,9 +195,11 @@ class StackImpl {
         int[] nums1 = { 6, 8, 0, 1, 2, 4 };
         int[] nums2 = { 6, 2, 4 };
 
-        nextGreaterElement_1(nums1, nums2);
-        prevSmallerElement(nums2);
-        prevSmallerElement(nums1);
+        int[] heights = { 2, 1, 5, 6, 2, 3 };
+        System.out.println(largestRectangleArea(heights));
+        // nextGreaterElement_1(nums1, nums2);
+        // prevSmallerElement(nums2);
+        // prevSmallerElement(nums1);
 
     }
 }
