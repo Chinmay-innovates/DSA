@@ -1,10 +1,8 @@
-package java_practice;
+package java_practice.practice;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CountDownLatch;
 
 public class StringsPrac {
     public static boolean checkInclusion(String s1, String s2) {

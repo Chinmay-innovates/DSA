@@ -1,7 +1,11 @@
-package java_practice;
+package java_practice.practice;
 
-import java.sql.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 class StackImpl {
     private List<Integer> stack;
@@ -54,7 +58,6 @@ class StackImpl {
 
     public boolean validParenthesis(String s) {
         Stack<Character> stack = new Stack<>();
-        System.out.println(s);
         for (char c : s.toCharArray()) {
             System.out.println(c);
             if (c == '(' || c == '{' || c == '[') {
@@ -63,9 +66,8 @@ class StackImpl {
                 if (stack.isEmpty())
                     return false;
 
-                if ((c == ')' && stack.peek() == '(') ||
-                        (c == '}' && stack.peek() == '{') ||
-                        (c == ']' && stack.peek() == '['))
+                if ((c == ')' && stack.peek() == '(') || (c == '}' && stack.peek() == '{')
+                        || (c == ']' && stack.peek() == '['))
                     stack.pop();
                 else
                     return false;
@@ -176,33 +178,94 @@ class StackImpl {
         return result;
     }
 
+    public static int trap(int[] height) {
+
+        int ans = 0, n = height.length;
+        int left = 0, right = n - 1, leftMax = 0, rightMax = 0;
+
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+
+            if (leftMax < rightMax) {
+                ans += leftMax - height[left];
+                left++;
+            } else {
+                ans += rightMax - height[right];
+                right--;
+            }
+        }
+        return ans;
+    }
+
+    public static int getCelebrity(int[][] arr) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            stack.push(i);
+        }
+
+        while (stack.size() > 1) {
+            int i = stack.peek();
+            stack.pop();
+
+            int j = stack.peek();
+            stack.pop();
+
+            if (arr[i][j] == 0) {
+                stack.push(i);
+            } else {
+                stack.push(j);
+            }
+        }
+
+        int celeb = stack.peek();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (i != celeb && (arr[celeb][i] == 1 || arr[i][celeb] == 0)) {
+                return -1;
+            }
+        }
+        return celeb;
+    }
+
     public static void main(String[] args) {
-        // StackImpl s = new StackImpl();
-        // s.push(3);
-        // s.push(5);
-        // s.push(7);
-        // s.printStack(); // Expected output: [3, 5, 7]
-        // s.inc(2, 10); // Increase bottom 2 elements by 10
-        // s.printStack(); // Expected output: [13, 15, 7]
-        // s.pop();
-        // s.printStack(); // Expected output: [13, 15]
-        // s.push(8);
-        // s.push(2);
-        // s.inc(3, 5);
-        // s.printStack(); // Expected output: [18, 20, 12, 2]
-        // System.out.println(s.validParenthesis("{()}[]"));
+        StackImpl s = new StackImpl();
+        s.push(3);
+        s.push(5);
+        s.push(7);
+        s.printStack(); // Expected output: [3, 5, 7]
+        s.inc(2, 10); // Increase bottom 2 elements by 10
+        s.printStack(); // Expected output: [13, 15, 7]
+        s.pop();
+        s.printStack(); // Expected output: [13, 15]
+        s.push(8);
+        s.push(2);
+        s.inc(3, 5);
+        s.printStack(); // Expected output: [18, 20, 12, 2]
+        System.out.println(s.validParenthesis("{()}[]"));
 
-        int[] nums1 = { 6, 8, 0, 1, 2, 4 };
-        int[] nums2 = { 6, 2, 4 };
+        int[] nums1 = {6, 8, 0, 1, 2, 4};
+        int[] nums2 = {6, 2, 4};
 
-        int[] heights = { 2, 1, 5, 6, 2, 3 };
+        int[] heights = {2, 1, 5, 6, 2, 3};
         System.out.println(largestRectangleArea(heights));
-        // nextGreaterElement_1(nums1, nums2);
-        // prevSmallerElement(nums2);
-        // prevSmallerElement(nums1);
+        nextGreaterElement_1(nums1, nums2);
+        prevSmallerElement(nums1);
+        prevSmallerElement(nums2);
 
+        System.out.println(trap(new int[] {4, 2, 0, 3, 2, 5}));
+        System.out.println(trap(new int[] {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}));
+
+        System.out
+                .println("Celeb is " + getCelebrity(new int[][] {{1, 0, 0}, {0, 0, 0}, {0, 1, 0}})); // -1
+        System.out
+                .println("Celeb is " + getCelebrity(new int[][] {{0, 1, 0}, {0, 0, 0}, {0, 1, 0}})); // 1
+        System.out
+                .println("Celeb is " + getCelebrity(new int[][] {{0, 1, 1}, {0, 0, 1}, {0, 0, 0}})); // 2
     }
 }
+
 
 class MinStack {
     Stack<Long> stack = new Stack<>();

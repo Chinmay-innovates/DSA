@@ -1,7 +1,10 @@
 package java_practice.graphs;
 
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.PriorityQueue;
 import java_practice.graphs.Graph.Edge;
 
 public class Astar {

@@ -1,4 +1,69 @@
 {
+	// Configure the Java language server with optimized VM arguments
 	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
-	"java.debug.settings.onBuildFailureProceed": true
+
+	// Allow debugging to proceed even if build errors are present
+	"java.debug.settings.onBuildFailureProceed": true,
+
+	// Automatically format your code on save for consistent style
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "always",
+		"source.fixAll": "explicit"
+	},
+
+	// Enforce the Google Java Style using a remote configuration
+	"java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+	"java.format.settings.profile": "GoogleStyle",
+
+	// Enable inline code lenses for references and implementations to boost code navigation
+	"java.referencesCodeLens.enabled": true,
+	"java.implementationCodeLens.enabled": true, // Changed to "enabled" for consistency
+
+	// Automatically update build configurations when changes are detected
+	"java.configuration.updateBuildConfiguration": "automatic",
+
+	// Exclude common build output folders from the explorer to reduce clutter
+	"files.exclude": {
+		"**/target": true,
+		"**/bin": true,
+		"**/out": true,
+		"**/.classpath": true, // Exclude Eclipse classpath files
+		"**/.project": true, // Exclude Eclipse project files
+		"**/.settings": true // Exclude Eclipse settings folder
+	},
+
+	// Visual improvements: render whitespace and display column rulers
+	"editor.renderWhitespace": "all",
+	"editor.rulers": [80, 120],
+
+	// Enable auto-save with a slight delay to keep your work in sync
+	"files.autoSave": "afterDelay",
+	"files.autoSaveDelay": 1000,
+
+	// Define your Java runtime environment(s)
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-21",
+			"path": "C:\\Program Files\\Java\\jdk-22" // <-- Replace with  actual JDK path
+		}
+	],
+
+	// Enable automatic builds and ensure code completion is active
+	"java.autobuild.enabled": true,
+	"java.completion.enabled": true,
+
+	// Show parameter name hints inline to improve code readability
+	"java.inlayHints.parameterNames.enabled": "all",
+
+	// Additional settings for better productivity
+	"java.semanticHighlighting.enabled": true, // Enable semantic highlighting for better code understanding
+	"java.trace.server": "verbose", // Enable verbose logging for the Java language server (useful for debugging issues)
+	"java.import.gradle.enabled": true, // Enable Gradle imports if you use Gradle
+	"java.import.maven.enabled": true, // Enable Maven imports if you use Maven
+	"java.signatureHelp.enabled": true, // Enable signature help for method parameters
+	"java.errors.incompleteClasspath.severity": "warning", // Treat incomplete classpath issues as warnings instead of errors
+	"java.foldingRange.enabled": true, // Enable code folding for better navigation
+	"java.symbols.includeSourceMethodDeclarations": true, // Include method declarations in symbol search
+	"java.quickfix.showAt": "line" // Show quick fixes at the line level
 }

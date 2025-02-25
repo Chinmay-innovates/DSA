@@ -133,13 +133,14 @@ public class GraphGenerator {
     }
 
     public static void main(String[] args) {
-        int V = 100; // Number of vertices
-        int E = 500; // Number of edges
+        int V = 1000; // Number of vertices
+        int E = 5000; // Number of edges
 
         // Generate a graph
         List<List<Edge>> graph = createGraph(V, E);
 
-        // printGraph(graph);
+        printGraph(graph);
+        GraphGUI.printGraphGUI(graph);
 
         int src = 0, tar = 9;
         System.out.println("Shortest path: " + findShortestPath(graph, src, tar, V));
