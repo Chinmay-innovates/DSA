@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Graph {
-    static class Edge {
+
+    public static class Edge {
+
         int src, dest, wt;
 
         public Edge(int s, int d, int w) {

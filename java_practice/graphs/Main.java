@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java_practice.graphs.Graph.Edge;
 
 public class Main {
+
     public static void main(String[] args) {
         int V = 9;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -37,10 +38,10 @@ public class Main {
 
         Astar.aStar(graph, 0, V - 1, V, h);
 
-        System.out.println("\nhas directed cycle : " +
-                CycleDetection.hasDirectedCycle(graph, 0, new boolean[V], new boolean[V]));
-        System.out.println("has directed cycle : " +
-                CycleDetection.hasUndirectedCycle(graph, 0, new boolean[V], -1));
+        System.out.println("\nhas directed cycle : "
+                + CycleDetection.hasDirectedCycle(graph, 0, new boolean[V], new boolean[V]));
+        System.out.println("has directed cycle : "
+                + CycleDetection.hasUndirectedCycle(graph, 0, new boolean[V], -1));
 
         System.out.println("\nPrims Algorithm:");
         Prims.primsAlgo(graph, V);

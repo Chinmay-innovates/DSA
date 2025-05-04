@@ -2,9 +2,7 @@ package java_practice.graphs;
 
 import java.util.ArrayList;
 import java.util.Stack;
-
 import java_practice.graphs.Graph.Edge;
-
 
 public class Kosaraju {
 
